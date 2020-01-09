@@ -17,7 +17,7 @@ pipeline {
             agent { label 'linux-container' }
             steps {
                 script {
-                    docker.withRegistry('https://us.gcr.io', 'gcr:gcr-push-only') {
+                    docker.withRegistry('https://us.gcr.io', 'gcr:foobar') {
                         app.push("${env.BUILD_NUMBER}")
                     }
                 }
