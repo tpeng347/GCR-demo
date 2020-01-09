@@ -4,7 +4,7 @@ def app = null;
 
 pipeline {
     agent none
-     stages {
+    stages {
         stage('Build') {
             agent { label 'linux-container' }
             steps {
@@ -15,11 +15,13 @@ pipeline {
         }
         stage('Push') {
             agent { label 'linux-container' }
-            script {
-                docker.withRegistry('https://us.gcr.io', 'gcr:[platform-sandbox]') {
-                    app.push("${env.BUILD_NUMBER}")
+            steps {
+                script {
+                    docker.withRegistry('https://us.gcr.io', 'gcr:[platform-sandbox]') {
+                        app.push("${env.BUILD_NUMBER}")
+                    }
                 }
             }
         }
-     }
+    }
 }
