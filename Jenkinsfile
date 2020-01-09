@@ -9,7 +9,7 @@ pipeline {
             agent { label 'linux-container' }
             steps {
                 script {
-                    app = docker.build("platform-sandbox-foobar/sandbox-demo")
+                    app = docker.build("platform-sandbox-2028d9/sandbox-demo")
                 }
             }
         }
@@ -17,7 +17,7 @@ pipeline {
             agent { label 'linux-container' }
             steps {
                 script {
-                    docker.withRegistry('https://us.gcr.io', 'gcr:platform-sandbox') {
+                    docker.withRegistry('https://us.gcr.io', 'gcr:platform-sandbox-nobucket') {
                         app.push("${env.BUILD_NUMBER}")
                     }
                 }
