@@ -9,7 +9,7 @@ pipeline {
             agent { label 'linux-container' }
             steps {
                 script {
-                    app = docker.build("platform-sandbox-2028d9/sandbox-demo")
+                    app = docker.build("platform-sandbox-foobar/sandbox-demo")
                 }
             }
         }
